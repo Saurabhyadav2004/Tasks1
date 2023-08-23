@@ -1,0 +1,31 @@
+# Define the chatbot's rules and responses
+rules = {
+    "hello": "Hello! How can I assist you today?",
+    "how are you": "I'm just a chatbot, but I'm here to help you!",
+    "what is your name": "I'm a chatbot created by OpenAI.",
+    "bye": "Goodbye! Have a great day!",
+    "default": "I'm sorry, I don't understand. Could you please rephrase or ask something else?"
+}
+
+# Function to process user input and return a response
+def chatbot_response(user_input):
+    # Convert user input to lowercase for case-insensitive matching
+    user_input = user_input.lower()
+    
+    # Check if any rule matches the user input
+    for pattern, response in rules.items():
+        if pattern in user_input:
+            return response
+    
+    # If no rule matches, return the default response
+    return rules["default"]
+
+# Main loop to simulate a conversation with the chatbot
+print("Chatbot: Hello! How can I assist you today?")
+while True:
+    user_input = input("You: ")
+    if user_input.lower() == "exit":
+        print("Chatbot: Goodbye! Have a great day!")
+        break
+    response = chatbot_response(user_input)
+    print("Chatbot:", response)
